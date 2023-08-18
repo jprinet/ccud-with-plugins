@@ -5,6 +5,6 @@ import org.apache.maven.execution.MavenSession;
 
 public interface GradleEnterprisePluginApi {
 
-    void configure(GradleEnterpriseApi api, MavenSession session);
+    void configure(GradleEnterpriseApi api);
 
 }

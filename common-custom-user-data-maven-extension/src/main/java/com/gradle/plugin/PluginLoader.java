@@ -42,7 +42,7 @@ public class PluginLoader {
 
     public void loadAndConfigurePlugins(GradleEnterpriseApi api, MavenSession session) {
         Set<URL> plugins = loadPlugins(session);
-        configurePlugins(api, session, plugins);
+        configurePlugins(api, plugins);
     }
 
     private Set<URL> loadPlugins(MavenSession session) {
@@ -83,14 +83,14 @@ public class PluginLoader {
         return plugins;
     }
 
-    private void configurePlugins(GradleEnterpriseApi api, MavenSession session, Set<URL> plugins) {
+    private void configurePlugins(GradleEnterpriseApi api, Set<URL> plugins) {
         if (!plugins.isEmpty()) {
             try (URLClassLoader urlClassLoader = new URLClassLoader(plugins.toArray(new URL[0]), this.getClass().getClassLoader())) {
                 ServiceLoader<GradleEnterprisePluginApi> loader = ServiceLoader.load(GradleEnterprisePluginApi.class, urlClassLoader);
 
                 for (GradleEnterprisePluginApi plugin : loader) {
                     System.out.println("Loading " + plugin.getClass().getSimpleName());
-                    plugin.configure(api, session);
+                    plugin.configure(api);
                 }
             } catch (IOException e) {
                 throw new IllegalStateException("Error configuring plugins", e);

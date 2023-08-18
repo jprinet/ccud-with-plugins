@@ -4,7 +4,6 @@ import com.gradle.maven.extension.api.GradleEnterpriseApi;
 import com.gradle.maven.extension.api.cache.BuildCacheApi;
 import com.gradle.maven.extension.api.cache.MojoMetadataProvider;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
-import org.apache.maven.execution.MavenSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -134,7 +133,7 @@ public class GradleEnterprisePluginQuarkus implements GradleEnterprisePluginApi 
         }
 //    }
 
-    public void configure(GradleEnterpriseApi api, MavenSession session) {
+    public void configure(GradleEnterpriseApi api) {
         configureBuildCache(api.getBuildCache());
     }
 
