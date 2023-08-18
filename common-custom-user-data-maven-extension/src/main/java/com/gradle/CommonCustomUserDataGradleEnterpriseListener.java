@@ -42,10 +42,10 @@ public final class CommonCustomUserDataGradleEnterpriseListener implements Gradl
 
         GroovyScriptUserData.evaluate(session, api, logger);
 
-        loadPlugins(api, session);
+        loadAndConfigurePlugins(api, session);
     }
 
-    private void loadPlugins(GradleEnterpriseApi api, MavenSession session) {
+    private void loadAndConfigurePlugins(GradleEnterpriseApi api, MavenSession session) {
         new PluginLoader().loadAndConfigurePlugins(api, session);
     }
 

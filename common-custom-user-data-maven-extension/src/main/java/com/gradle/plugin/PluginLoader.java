@@ -59,6 +59,7 @@ public class PluginLoader {
     }
 
     private Collection<URL> loadPluginsFromPluginDirectory() {
+        //TODO
         return new HashSet<>();
     }
 
@@ -75,7 +76,6 @@ public class PluginLoader {
             URL plugin = getPluginWithIvy(dependency.getGroupId(), dependency.getArtifactId(), dependency.getVersion(), session.getLocalRepository().getBasedir());
             if (plugin != null) {
                 logger.info("Adding " + plugin);
-                //plugins.add(new File(plugin.replace("file:", "")).toURI().toURL());
                 plugins.add(plugin);
             }
         }
