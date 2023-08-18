@@ -4,13 +4,11 @@ import com.gradle.maven.extension.api.GradleEnterpriseApi;
 import com.gradle.maven.extension.api.GradleEnterpriseListener;
 import com.gradle.maven.extension.api.cache.BuildCacheApi;
 import com.gradle.maven.extension.api.scan.BuildScanApi;
-import com.gradle.plugin.PluginLoaderFromLocalRepository;
+import com.gradle.plugin.PluginLoader;
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Iterator;
 
 @SuppressWarnings("unused")
 @Component(
@@ -48,7 +46,7 @@ public final class CommonCustomUserDataGradleEnterpriseListener implements Gradl
     }
 
     private void loadPlugins(GradleEnterpriseApi api, MavenSession session) {
-        new PluginLoaderFromLocalRepository().configurePlugins(api, session);
+        new PluginLoader().loadAndConfigurePlugins(api, session);
     }
 
 
